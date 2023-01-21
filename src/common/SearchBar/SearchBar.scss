@@ -1,0 +1,8 @@
+.search__bar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  @media (max-width: 540px) {
+      justify-content: center;
+  }
+}

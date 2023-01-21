@@ -1,0 +1,20 @@
+.input__box {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Montserrat', sans-serif;
+    .input__search {
+        width: 220px;
+        height: 40px;
+        font-family: 'Montserrat', sans-serif;
+        padding: 3px;
+        border-style: solid;
+        border-color: #792c9b;
+        border-width: 0 0 2px 0;
+        margin: 5px;
+    }
+    .input__search:focus {
+        border-color: rgba(175, 113, 203, 0.99);
+        border-width: 0 0 2px 0;
+        outline: none;
+    }
+}
