@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './ProductsList.scss'
+import { Link } from "react-router-dom";
 
 
 class ProductsList extends Component {
@@ -46,8 +47,7 @@ class ProductsList extends Component {
             }
 
             return  <li className="border-1 border px-2 py-1 d-block card-item" key={product.id}>
-
-                { product.name }
+                <Link to={`/products/${product.id}`}>{product.name}</Link>
                 <br/>
                 <div className="mt-2">
                 { product.price }

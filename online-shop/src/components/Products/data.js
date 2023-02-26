@@ -4,6 +4,7 @@ const data = {
             id: 1,
             name: 'Помада Loreal',
             price: 499.99,
+
         },
         {
             id: 2,

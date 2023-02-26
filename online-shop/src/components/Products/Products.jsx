@@ -17,17 +17,17 @@ class Products extends Component {
             case 'make-up':
                 this.setState({
                     products: data.makeUp
-                })
+                }, ()=>this.props.setProductCategoryData(data.makeUp))
                 break;
             case 'hair':
                 this.setState({
                     products: data.hair
-                })
+                }, ()=>this.props.setProductCategoryData(data.hair))
                 break;
             case 'bath':
                 this.setState({
                     products: data.bath
-                })
+                }, ()=>this.props.setProductCategoryData(data.bath))
                 break;
             default:
                 break;

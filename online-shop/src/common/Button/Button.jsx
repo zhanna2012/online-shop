@@ -8,6 +8,7 @@ function Button(props) {
                 className = "btn"
                 onSubmit = {props.onSubmit}
                 id={props.id}
+                type={props.type ? props.type : 'submit'}
         >
             {props.buttonText}
         </button>
