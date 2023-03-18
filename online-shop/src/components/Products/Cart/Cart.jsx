@@ -1,19 +1,13 @@
-import React, {Component} from 'react';
+import React from 'react';
 
-class Cart extends Component {
-
-    constructor(props) {
-        super(props);
-    }
+function Cart(props) {
 
 
-    render() {
-        return (
-            <>
-                <div className="px-4">Cart: { this.props.cartElementsCount}</div>
-            </>
-        );
-    }
+    return (
+        <>
+            <div className="px-4">Cart: { props.cartElementsCount}</div>
+        </>
+    );
 }
 
 

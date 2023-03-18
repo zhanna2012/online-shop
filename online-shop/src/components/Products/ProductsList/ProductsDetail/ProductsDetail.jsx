@@ -18,6 +18,10 @@ function ProductsDetail(props) {
         convert();
     }, [hryvniaAmount])
 
+/*    useEffect(() => {
+        convert();
+    }, [newComment])*/
+
     const handleCommentSubmit = (e) => {
         e.preventDefault();
         setComments([...comments, newComment]);
@@ -65,13 +69,13 @@ function ProductsDetail(props) {
                         type="text"
                         value={newComment}
                         onChange={(e) => {
-                            console.log(e.target.value);
                             setNewComment(e.target.value);
                         }
                         }
                     />
                 </label>
                 <Button type="submit"
+                        id={'submit-btn'}
                         buttonText="Submit"/>
             </form>
             <ul className="d-flex flex-column">

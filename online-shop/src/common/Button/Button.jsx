@@ -9,6 +9,7 @@ function Button(props) {
                 onSubmit = {props.onSubmit}
                 id={props.id}
                 type={props.type ? props.type : 'submit'}
+                disabled={props.disabled}
         >
             {props.buttonText}
         </button>

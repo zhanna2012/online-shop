@@ -5,21 +5,14 @@ import Logo from "./components/Logo/Logo";
 import SearchBar from "../../common/SearchBar/SearchBar";
 
 import './Header.scss';
-import LoginButton from "./components/LoginButton/LoginButton";
-import LogoutButton from "./components/LogoutButton/LogoutButton";
+import { useInputValue, useOnlineStatus, useToggle } from "./cutom-hooks";
 
 function Header(props) {
-    const [login, setLogin] = React.useState(false);
 
+    const [isTextChanged, setIsTextChanged] = useToggle();
+    const search = useInputValue("");
+    const isOnline = useOnlineStatus();
 
-    const logIn = () =>{
-        setLogin(true);
-    }
-
-
-    const logOut = () =>{
-        setLogin(false);
-    }
 
     return (
        <header className="header container">
@@ -35,12 +28,17 @@ function Header(props) {
            </div>
            <div>
                <SearchBar
+                   {...search}
                    placeholderText = 'Пошук понад 249000 товарів'
                    buttonText = 'Знайти'
                />
            </div>
-           { login ? <LogoutButton OnClick={logOut}/> : <LoginButton OnClick={logIn}/>}
+           <Button
+               disabled={!isOnline}
+               onClick={setIsTextChanged} buttonText={isTextChanged ? 'Log out' : 'Login'}></Button>
        </header>
     );
 }
 export default Header;
+
+
