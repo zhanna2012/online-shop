@@ -1,12 +1,15 @@
-import React, {useEffect, useState} from "react"
-import { Link, useParams } from "react-router-dom"
+import React, {useContext, useEffect, useState} from "react"
+import {Link, useParams} from "react-router-dom"
 import './ProductsDetail.scss'
 import Button from "../../../../common/Button/Button";
+import {Context} from "../../../../context";
 
 
 function ProductsDetail(props) {
     const { productId } = useParams();
-    const thisProductData = props.productsData.find(prod => prod.id === parseInt(productId));
+    const { productsData, setProductCategoryData } = useContext(Context);
+
+    const thisProductData = productsData.find(prod => prod.id === parseInt(productId));
 
     const [hryvniaAmount, setHryvniaAmount] = useState(thisProductData.price);
     const [dollarAmount, setDollarAmount] = useState(0);
@@ -18,9 +21,7 @@ function ProductsDetail(props) {
         convert();
     }, [hryvniaAmount])
 
-/*    useEffect(() => {
-        convert();
-    }, [newComment])*/
+
 
     const handleCommentSubmit = (e) => {
         e.preventDefault();

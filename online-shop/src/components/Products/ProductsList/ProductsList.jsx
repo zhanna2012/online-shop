@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import './ProductsList.scss'
 import { Link } from "react-router-dom";
+import {Context} from "../../../context";
 
 
 function ProductsList(props) {
@@ -8,6 +9,7 @@ function ProductsList(props) {
     const [cartItemsCount, setCartItemsCount] = useState(0);
     const [cartItems, setCartItems] = useState([]);
     const [itemsCount, setItemsCount] = useState(0);
+    const { productsData, setProductCategoryData } = useContext(Context);
 
 
     useEffect(() => {
@@ -27,15 +29,11 @@ function ProductsList(props) {
 
     useEffect( () => {
         return () => setItemsCount(0);
-    }, [props.products])
+    }, [productsData])
 
 
     const renderItems = () => {
-        return props.products.map((product) => {
-            if(props.products.length !== itemsCount) {
-                setItemsCount((prevState) => prevState + 1);
-            }
-
+        return productsData.map((product) => {
             return  <li className="border-1 border px-2 py-1 d-block card-item" key={product.id}>
                 <Link to={`/products/${product.id}`}>{product.name}</Link>
                 <br/>
@@ -55,7 +53,7 @@ function ProductsList(props) {
     return (
         <>
             <div className="mt-5 container">
-                <p>Number of items: {itemsCount}</p>
+                <p>Number of items: {productsData.length}</p>
                 <ul className="card-list list-group d-flex  flex-row justify-content-between">
                     {renderItems()}
                 </ul>

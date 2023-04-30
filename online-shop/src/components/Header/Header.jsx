@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 
 import Button from "../../common/Button/Button";
 import Logo from "./components/Logo/Logo";
@@ -6,12 +6,14 @@ import SearchBar from "../../common/SearchBar/SearchBar";
 
 import './Header.scss';
 import { useInputValue, useOnlineStatus, useToggle } from "./cutom-hooks";
+import { UserNameContext } from "../../context";
 
 function Header(props) {
 
     const [isTextChanged, setIsTextChanged] = useToggle();
     const search = useInputValue("");
     const isOnline = useOnlineStatus();
+    const user = useContext(UserNameContext);
 
 
     return (
@@ -33,9 +35,12 @@ function Header(props) {
                    buttonText = 'Знайти'
                />
            </div>
-           <Button
-               disabled={!isOnline}
-               onClick={setIsTextChanged} buttonText={isTextChanged ? 'Log out' : 'Login'}></Button>
+           <div className="d-flex align-items-center justify-content-center">
+               <div className="d-flex align-items-center justify-content-center">{user}</div>
+               <Button
+                   disabled={!isOnline}
+                   onClick={setIsTextChanged} buttonText={isTextChanged ? 'Log out' : 'Login'}></Button>
+           </div>
        </header>
     );
 }
