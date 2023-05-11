@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react';
-import './ProductsList.scss'
+import styles from './ProductsList.module.scss'
 import { Link } from "react-router-dom";
 import {Context} from "../../../context";
 
@@ -34,7 +34,7 @@ function ProductsList(props) {
 
     const renderItems = () => {
         return productsData.map((product) => {
-            return  <li className="border-1 border px-2 py-1 d-block card-item" key={product.id}>
+            return  <li className={`border-1 border px-2 py-1 d-block ${styles.cardItem}`} key={product.id}>
                 <Link to={`/products/${product.id}`}>{product.name}</Link>
                 <br/>
                 <div className="mt-2">

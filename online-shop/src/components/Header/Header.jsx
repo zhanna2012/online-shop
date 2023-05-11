@@ -4,7 +4,7 @@ import Button from "../../common/Button/Button";
 import Logo from "./components/Logo/Logo";
 import SearchBar from "../../common/SearchBar/SearchBar";
 
-import './Header.scss';
+import styles from './Header.module.scss';
 import { useInputValue, useOnlineStatus, useToggle } from "./cutom-hooks";
 import { UserNameContext } from "../../context";
 
@@ -17,15 +17,15 @@ function Header(props) {
 
 
     return (
-       <header className="header container">
-           <div className="header-contacts">
-               <div className="header-contacts-text">
+       <header className={styles.header}>
+           <div className={styles.headerContacts}>
+               <div className={styles.headerContactsText}>
                    (044) 593 82 56 0(800) 50 77 40 <br/>
                    Щоденно з 7:55 до 20:05
                </div>
                <Button buttonText = 'Зворотній здвінок'/>
            </div>
-           <div className="logo-wrapper">
+           <div className={styles.logoWrapper}>
                <Logo/>
            </div>
            <div>
@@ -41,6 +41,7 @@ function Header(props) {
                    disabled={!isOnline}
                    onClick={setIsTextChanged} buttonText={isTextChanged ? 'Log out' : 'Login'}></Button>
            </div>
+
        </header>
     );
 }

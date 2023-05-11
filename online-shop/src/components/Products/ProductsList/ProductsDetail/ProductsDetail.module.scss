@@ -1,0 +1,37 @@
+.card-item{
+  border-color:#792c9b !important;
+  margin: 10px 0;
+  padding: 5px;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-color:#792c9b !important;
+  margin: 10px 0;
+  padding: 5px;
+  border-radius: 4px;
+}
+
+.item-enter {
+  opacity: 0;
+  transform: translateX(-50%);
+}
+
+.item-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.item-exit {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.item-exit-active {
+  opacity: 0;
+  transform: translateX(-50%);
+  transition: opacity 300ms, transform 300ms;
+}

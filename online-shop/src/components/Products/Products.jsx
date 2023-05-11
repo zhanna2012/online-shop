@@ -4,6 +4,7 @@ import data from "./data";
 import Cart from "./Cart/Cart";
 import {Context} from "../../context";
 import { useNavigate, useParams} from "react-router-dom";
+import Button from "../../common/Button/Button";
 
 
 function Products(props) {
@@ -31,26 +32,24 @@ function Products(props) {
         <>
             <div className="justify-content-center d-flex align-items-center">
                 <Cart className="mr-4" cartElementsCount={cartElementsCount}/>
-                <button className='btn btn-primary'
+                <Button
+                    buttonText='Макіяж'
                         onClick={() => {
                             navigate("/categories/makeUp");
                         }}>
-                    Макіяж
-                </button>
-                <button className="btn btn-primary"
+                </Button>
+                <Button buttonText='Для волосся'
                         onClick={() => {
                             navigate("/categories/hair");
                         }
                         }>
-                    Для волосся
-                </button>
-                <button className="btn btn-primary"
+                </Button>
+                <Button buttonText='Для ванни'
                         onClick={() => {
                             navigate("/categories/bath");
                         }
                         }>
-                    Для ванни
-                </button>
+                </Button>
             </div>
             <ProductsList
                 getCartElements={getCartElements}></ProductsList>

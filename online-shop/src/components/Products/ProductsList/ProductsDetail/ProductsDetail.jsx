@@ -1,8 +1,11 @@
 import React, {useContext, useEffect, useState} from "react"
 import {Link, useParams} from "react-router-dom"
-import './ProductsDetail.scss'
+import styles from './ProductsDetail.module.scss'
 import Button from "../../../../common/Button/Button";
+import Dialog from "../../../../common/Dialog/Dialog";
 import {Context} from "../../../../context";
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
+
 
 
 function ProductsDetail(props) {
@@ -17,6 +20,17 @@ function ProductsDetail(props) {
     const [comments, setComments] = useState([]);
     const [newComment, setNewComment] = useState("");
 
+    const [isOpen, setIsOpen] = useState(false);
+
+    const handleOpenDialog = () => {
+        setIsOpen(true);
+    };
+
+    const handleCloseDialog = () => {
+        setIsOpen(false);
+    };
+
+
     useEffect(() => {
         convert();
     }, [hryvniaAmount])
@@ -27,7 +41,7 @@ function ProductsDetail(props) {
         e.preventDefault();
         setComments([...comments, newComment]);
         setNewComment("");
-        alert('Ваш коментар додано успішно!')
+        handleOpenDialog();
     };
 
 
@@ -79,12 +93,22 @@ function ProductsDetail(props) {
                         id={'submit-btn'}
                         buttonText="Submit"/>
             </form>
-            <ul className="d-flex flex-column">
+            <TransitionGroup>
                 {comments.map((comment, index) => (
-                    <li className="border-1 border d-block card-item"
+                    <CSSTransition key={index} classNames={styles.item} timeout={700}>
+                        <div className={styles.item}>
+                            <span>{comment}</span>
+                        </div>
+                    </CSSTransition>
+                ))}
+            </TransitionGroup>
+          {/*  <ul className="d-flex flex-column">
+                {comments.map((comment, index) => (
+                    <li className={`border-1 border d-block ${styles.cardItem}`}
                         key={index}>{comment}</li>
                 ))}
-            </ul>
+            </ul>*/}
+            <Dialog isOpen={isOpen} onClose={handleCloseDialog}/>
         </div>
     )
 }

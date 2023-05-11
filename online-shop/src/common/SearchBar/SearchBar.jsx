@@ -1,14 +1,12 @@
 import React from 'react';
-
-
-import './SearchBar.scss'
+import styles from'./SearchBar.module.scss'
 import Input from "../Input/Input";
 import Button from "../Button/Button";
 
 
 function SearchBar(props) {
     return (
-        <div className = "search__bar">
+        <div className = {styles.search__bar}>
             <Input placeholderText = {props.placeholderText}
                    onChange = {props.onChange}
                    labelText={props.labelText}/>

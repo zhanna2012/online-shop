@@ -1,12 +1,12 @@
 import LogoPic from './../../assets/logo.png'
 
-import './Logo.scss';
+import styles from './Logo.module.scss';
 
 function Logo(props)  {
 
     return (
         <img
-        className="logo"
+        className={styles.logo}
         src={LogoPic}
         alt='logo'
         data-testid="logo"/>
